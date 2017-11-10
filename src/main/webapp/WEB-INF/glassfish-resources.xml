@@ -5,7 +5,7 @@
         <property name="serverName" value="localhost"/>
         <property name="portNumber" value="1527"/>
         <property name="databaseName" value="jornal"/>
-        <property name="User" value="usuario"/>
+        <property name="User" value="root"/>
         <property name="Password" value="root"/>
         <property name="URL" value="jdbc:derby://localhost:1527/jornal"/>
         <property name="driverClass" value="org.apache.derby.jdbc.ClientDriver"/>

@@ -30,6 +30,6 @@ public class NoticiaBean  implements Serializable{
         return facade.findAll();
     }
     
-
+    
     
 }

@@ -8,7 +8,15 @@
     <h:body>
         <h1><h:outputText value="#{noticiaBean.noticia.titulo}"></h:outputText></h1>
         <h2>Autor: <h:outputText value="#{noticiaBean.noticia.autor}"></h:outputText></h2>
-        
+        <p><h:outputText value="#{noticiaBean.noticia.texto}"></h:outputText></p>
+        <br></br>
+        <h:form>
+            Nome: <h:inputText id="autor" value="#{comentarioBean.novoComentario.autor}"></h:inputText>
+            Email: <h:inputText id="email" value="#{comentarioBean.novoComentario.email}"></h:inputText>
+            Comentario: <h:inputTextarea id="texto" value="#{comentarioBean.novoComentario.texto}"></h:inputTextarea>
+            <h:inputText id="noticia" value="#{noticiaBean.noticia.id}"></h:inputText>
+            <h:commandButton value="Comentar" action="#{comentarioBean.adicionar()}"></h:commandButton>
+        </h:form>
     </h:body>
 </html>
 
