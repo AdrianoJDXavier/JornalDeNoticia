@@ -6,9 +6,12 @@
 package com.jornal.facede;
 
 import com.jornal.modell.Comentario;
+import com.jornal.modell.Noticia;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -27,6 +30,12 @@ public class ComentarioFacade extends AbstractFacade<Comentario> {
 
     public ComentarioFacade() {
         super(Comentario.class);
+    }
+    
+    public List<Comentario> buscaComentarioPorNoticia(Noticia n) {
+        TypedQuery<Comentario> query = em.createQuery("select c from Comentario c where c.noticia.id = :id", Comentario.class);
+        query.setParameter("id", n.getId());
+        return query.getResultList();
     }
     
 }

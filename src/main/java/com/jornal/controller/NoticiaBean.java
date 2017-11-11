@@ -17,7 +17,6 @@ public class NoticiaBean  implements Serializable{
     @Inject
     private NoticiaFacade facade;
     
-    
     public Noticia getNoticia(){
         List<Noticia> noticias = facade.findAll();
         Noticia noticia = null;
