@@ -1,21 +1,39 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>JORNAL DE NOTICIAS</title>
     </h:head>
     <h:body style="margin-left: 20%; margin-right: 20%;">
-        <h1><h:outputText value="#{noticiaBean.noticia.titulo}"></h:outputText></h1>
-        <h2>Autor: <h:outputText value="#{noticiaBean.noticia.autor}"></h:outputText></h2>
-        <p><h:outputText value="#{noticiaBean.noticia.texto}"></h:outputText></p>
+        <div>
+
+            <h1><h:outputText value="#{noticiaBean.noticia.titulo}"></h:outputText></h1>
+            <h2>Autor: <h:outputText value="#{noticiaBean.noticia.autor}"></h:outputText></h2>
+            <p><h:outputText value="#{noticiaBean.noticia.texto}"></h:outputText></p>
+        </div>
         <br></br>
-        <h:form>
-            Nome: <h:inputText id="autor" value="#{comentarioBean.novoComentario.autor}"></h:inputText>
-            Email: <h:inputText id="email" value="#{comentarioBean.novoComentario.email}"></h:inputText>
-            Comentario: <h:inputTextarea id="texto" value="#{comentarioBean.novoComentario.texto}"></h:inputTextarea>
-            <h:commandButton value="Comentar" action="#{comentarioBean.adicionar()}"></h:commandButton>
-        </h:form>
+        <h3>Comentários.</h3>
+        <div style="border: 1px solid; text-align: center">
+            <h:form style="margin: 1%">
+                <label>Nome: </label> 
+                <h:inputText style="width: 90%; margin-bottom: 10px" id="autor" value="#{comentarioBean.novoComentario.autor}"></h:inputText>
+                <label>Email: </label>
+                <h:inputText style="width: 90%; margin-bottom: 10px" id="email" value="#{comentarioBean.novoComentario.email}"></h:inputText>
+                <label>Comentario: </label>
+                <h:inputTextarea style="width: 85%" id="texto" value="#{comentarioBean.novoComentario.texto}"></h:inputTextarea>
+                <h:commandButton value="Comentar" action="#{comentarioBean.adicionar()}"></h:commandButton>
+            </h:form>
+        </div>
+        <br></br>
+        <div>
+            <ui:repeat value="#{comentarioBean.comentarios}" var="comentario">
+                <p><strong><h:outputText value="#{comentario.autor}"></h:outputText></strong>
+                    (<h:outputText value="#{comentario.email}"></h:outputText>)</p>
+                <p><h:outputText value="#{comentario.texto}"></h:outputText></p>
+            </ui:repeat>
+        </div>
     </h:body>
 </html>
 
