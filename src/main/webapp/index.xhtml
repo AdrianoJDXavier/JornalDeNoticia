@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>JORNAL DE NOTICIAS</title>
     </h:head>
@@ -17,12 +18,18 @@
         <h3>Comentários.</h3>
         <div style="border: 1px solid; text-align: center">
             <h:form style="margin: 1%">
+                <p style="color: red"><h:message for="email"/></p>
+                <p style="color: red"><h:message for="texto"/></p>
                 <label>Nome: </label> 
                 <h:inputText style="width: 90%; margin-bottom: 10px" id="autor" value="#{comentarioBean.novoComentario.autor}"></h:inputText>
                 <label>Email: </label>
-                <h:inputText style="width: 90%; margin-bottom: 10px" id="email" value="#{comentarioBean.novoComentario.email}"></h:inputText>
+                <h:inputText style="width: 90%; margin-bottom: 10px" id="email" value="#{comentarioBean.novoComentario.email}" required="true" label="Email" validatorMessage="E-mail incorreto">
+                    <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"></f:validateRegex>
+                </h:inputText>
                 <label>Comentario: </label>
-                <h:inputTextarea style="width: 85%" id="texto" value="#{comentarioBean.novoComentario.texto}"></h:inputTextarea>
+                <h:inputTextarea style="width: 85%" id="texto" value="#{comentarioBean.novoComentario.texto}" validatorMessage="Comentário de ter entre 100 e 500 caracteres.">
+                    <f:validateLength minimum="100" maximum="500"/>
+                </h:inputTextarea>
                 <h:commandButton value="Comentar" action="#{comentarioBean.adicionar()}"></h:commandButton>
             </h:form>
         </div>
