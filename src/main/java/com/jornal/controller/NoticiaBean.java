@@ -3,6 +3,7 @@ package com.jornal.controller;
 import com.jornal.facede.NoticiaFacade;
 import com.jornal.modell.Noticia;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -17,6 +18,18 @@ public class NoticiaBean  implements Serializable{
     @Inject
     private NoticiaFacade facade;
     
+    private Noticia novaNoticia = new Noticia();
+    
+    public Noticia getNovaNotica() {
+        return novaNoticia;
+    }
+    
+    public void adicionar(){
+        novaNoticia.setDataPublicacao(new Date());
+        facade.create(novaNoticia);
+        novaNoticia = new Noticia();
+    }
+    
     public Noticia getNoticia(){
         List<Noticia> noticias = facade.findAll();
         Noticia noticia = null;
@@ -27,6 +40,11 @@ public class NoticiaBean  implements Serializable{
     
     public List<Noticia> getNoticias(){
         return facade.findAll();
+    }
+    
+    public Noticia getNoticiaPorId(){
+        Noticia noticia = facade.find(this);
+        return noticia;
     }
     
     

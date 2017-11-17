@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Cadastrar Noticias</title>
+    </h:head>
+
+    <h:body style="margin-left: 20%; margin-right: 20%;">
+
+        <div id="top" class="top">
+            <ui:insert name="top">
+                <h:link outcome="noticias.xhtml" value="Noticias"/>&nbsp;&nbsp;
+                <h:link outcome="criarNoticia.xhtml" value=" Criar Noticia"/>
+            </ui:insert>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">
+                <h3>Cadastrar Noticias</h3>
+                <div style="border: 1px solid; text-align: center">
+                    <h:form style="margin: 1%">
+                        <label>Autor: </label> 
+                        <h:inputText style="width: 90%; margin-bottom: 10px" id="autor" value="#{noticiaBean.novaNotica.autor}"></h:inputText>
+                        <label>Titulo: </label>
+                        <h:inputText style="width: 90%; margin-bottom: 10px" id="titulo" value="#{noticiaBean.novaNotica.titulo}">
+                        </h:inputText>
+                        <label>Texto: </label>
+                        <h:inputTextarea style="width: 85%" id="texto" value="#{noticiaBean.novaNotica.texto}">
+                        </h:inputTextarea>
+                        <h:commandButton value="Comentar" action="#{noticiaBean.adicionar()}"></h:commandButton>
+                    </h:form>
+                </div>
+            </ui:insert>
+        </div>
+
+    </h:body>
+
+</html>
